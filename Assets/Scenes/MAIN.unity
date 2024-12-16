@@ -999,22 +999,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6516963350648333010, guid: 240c710ab7b15f34f89059917bf7687b, type: 3}
-      propertyPath: m_VoxelSize
-      value: 0.083333336
-      objectReference: {fileID: 0}
-    - target: {fileID: 6516963350648333010, guid: 240c710ab7b15f34f89059917bf7687b, type: 3}
-      propertyPath: m_NavMeshData
-      value: 
-      objectReference: {fileID: 23800000, guid: fc666585bb6325f45867cfd86e6b32e4, type: 2}
-    - target: {fileID: 6516963350648333010, guid: 240c710ab7b15f34f89059917bf7687b, type: 3}
-      propertyPath: m_UseGeometry
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6516963350648333010, guid: 240c710ab7b15f34f89059917bf7687b, type: 3}
-      propertyPath: m_CollectObjects
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8412109313984071644, guid: 240c710ab7b15f34f89059917bf7687b, type: 3}
       propertyPath: m_Name
       value: WorldSettings
