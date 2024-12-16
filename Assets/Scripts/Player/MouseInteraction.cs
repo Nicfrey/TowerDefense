@@ -25,7 +25,7 @@ namespace Player
             _camera = Camera.main;
             reader.OnMoveEvent.AddListener(GetScreenPosition);
             reader.OnClickEvent.AddListener(Click);
-            _visualisation = Instantiate(GameObject.CreatePrimitive(PrimitiveType.Cube));
+            _visualisation = Instantiate(defensePrefabs[_indexDefenseSelection]);
         }
 
         private void Click()
@@ -54,7 +54,7 @@ namespace Player
                 _gridPosition = GameManager.Instance.Board.WorldSpaceToGrid(hit.point);
                 Debug.Log("Cell pos : " + _gridPosition);
                 //_visualisation.transform.position = new Vector3(_gridPosition.x * GameManager.Instance.Board.GridWorld.cellSize.x, 1.5f, _gridPosition.y * GameManager.Instance.Board.GridWorld.cellSize.y);
-                _visualisation.transform.position = hit.point;
+                _visualisation.transform.position = new Vector3(_gridPosition.x, 1, _gridPosition.y);
             }
         }
         

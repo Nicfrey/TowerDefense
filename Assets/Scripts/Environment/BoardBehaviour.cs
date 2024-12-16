@@ -1,4 +1,5 @@
 using Environment.Defenses;
+using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -8,6 +9,7 @@ namespace Environment
     {
         [SerializeField] private Vector2Int sizeGrid;
         [SerializeField] private int sizeSquare;
+        [SerializeField] private NavMeshSurface surface;
         public GameObject[,] Board { get; private set; }
         
         public void Awake()
@@ -55,6 +57,12 @@ namespace Environment
             int resultX = x / sizeSquare;
             int resultY = y / sizeSquare;
             return new Vector2Int(resultX,resultY);
+        }
+
+        private bool IsEndPositionFree()
+        {
+            // Check if we can access the last pos
+            return false;
         }
     }
 }
