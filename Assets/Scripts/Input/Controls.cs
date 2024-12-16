@@ -114,6 +114,120 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""CameraInteraction"",
+            ""id"": ""50dda610-67c3-4a18-8487-3df5dc0f19f4"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""1a52b207-2002-4a87-a517-a53729dc0597"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Zoom"",
+                    ""type"": ""Value"",
+                    ""id"": ""3d01b733-119f-4a49-99d6-fdeca780b678"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""099fc9f2-77c0-4e59-bf6c-4f5d9479da6e"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""7f4d5750-89d4-49c9-bc3f-b256393e6014"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""ac12c635-7640-4319-ba8f-7b3c69ff0566"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""e505441b-fb4f-4bea-a148-7f7cd3d8e200"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""15bdc850-1036-4a69-96b6-d4a4f7c65a16"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""e0c8efc9-545c-4578-880a-780f36818eb2"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Zoom"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""d4b25f2e-236f-4c17-9d5b-f3dd447a9b82"",
+                    ""path"": ""<Mouse>/scroll/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Zoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""9a8552f4-4089-4aca-bf9c-187780d8ae89"",
+                    ""path"": ""<Mouse>/scroll/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Zoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -122,11 +236,16 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_GameInteractions = asset.FindActionMap("GameInteractions", throwIfNotFound: true);
         m_GameInteractions_Move = m_GameInteractions.FindAction("Move", throwIfNotFound: true);
         m_GameInteractions_Click = m_GameInteractions.FindAction("Click", throwIfNotFound: true);
+        // CameraInteraction
+        m_CameraInteraction = asset.FindActionMap("CameraInteraction", throwIfNotFound: true);
+        m_CameraInteraction_Move = m_CameraInteraction.FindAction("Move", throwIfNotFound: true);
+        m_CameraInteraction_Zoom = m_CameraInteraction.FindAction("Zoom", throwIfNotFound: true);
     }
 
     ~@Controls()
     {
         UnityEngine.Debug.Assert(!m_GameInteractions.enabled, "This will cause a leak and performance issues, Controls.GameInteractions.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_CameraInteraction.enabled, "This will cause a leak and performance issues, Controls.CameraInteraction.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -238,9 +357,68 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         }
     }
     public GameInteractionsActions @GameInteractions => new GameInteractionsActions(this);
+
+    // CameraInteraction
+    private readonly InputActionMap m_CameraInteraction;
+    private List<ICameraInteractionActions> m_CameraInteractionActionsCallbackInterfaces = new List<ICameraInteractionActions>();
+    private readonly InputAction m_CameraInteraction_Move;
+    private readonly InputAction m_CameraInteraction_Zoom;
+    public struct CameraInteractionActions
+    {
+        private @Controls m_Wrapper;
+        public CameraInteractionActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_CameraInteraction_Move;
+        public InputAction @Zoom => m_Wrapper.m_CameraInteraction_Zoom;
+        public InputActionMap Get() { return m_Wrapper.m_CameraInteraction; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(CameraInteractionActions set) { return set.Get(); }
+        public void AddCallbacks(ICameraInteractionActions instance)
+        {
+            if (instance == null || m_Wrapper.m_CameraInteractionActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_CameraInteractionActionsCallbackInterfaces.Add(instance);
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+            @Zoom.started += instance.OnZoom;
+            @Zoom.performed += instance.OnZoom;
+            @Zoom.canceled += instance.OnZoom;
+        }
+
+        private void UnregisterCallbacks(ICameraInteractionActions instance)
+        {
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+            @Zoom.started -= instance.OnZoom;
+            @Zoom.performed -= instance.OnZoom;
+            @Zoom.canceled -= instance.OnZoom;
+        }
+
+        public void RemoveCallbacks(ICameraInteractionActions instance)
+        {
+            if (m_Wrapper.m_CameraInteractionActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(ICameraInteractionActions instance)
+        {
+            foreach (var item in m_Wrapper.m_CameraInteractionActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_CameraInteractionActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public CameraInteractionActions @CameraInteraction => new CameraInteractionActions(this);
     public interface IGameInteractionsActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnClick(InputAction.CallbackContext context);
+    }
+    public interface ICameraInteractionActions
+    {
+        void OnMove(InputAction.CallbackContext context);
+        void OnZoom(InputAction.CallbackContext context);
     }
 }
