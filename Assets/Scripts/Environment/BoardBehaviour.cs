@@ -29,7 +29,7 @@ namespace Environment
             if (IsFree(position))
             {
                 GameObject defenseObject = Instantiate(defense.gameObject,
-                    new Vector3(position.x * sizeSquare , 0, position.y * sizeSquare),Quaternion.identity);
+                    new Vector3(position.x * sizeSquare , 0.5f, position.y * sizeSquare),Quaternion.identity);
                 Board[position.y,position.x] = defenseObject;
                 return true;
             }

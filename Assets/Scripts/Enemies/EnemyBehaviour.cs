@@ -7,6 +7,7 @@ namespace Enemies
 {
     public class EnemyBehaviour : MonoBehaviour
     {
+        [SerializeField] private float speed;
         private NavMeshAgent _agent;
         private HealthBehaviour _health;
 
@@ -14,6 +15,7 @@ namespace Enemies
         {
             _agent = GetComponent<NavMeshAgent>();
             _health = GetComponent<HealthBehaviour>();
+            _agent.speed = speed;
             _agent.SetDestination(EndGoalBehaviour.Instance.EndGoalPosition);
         }
 

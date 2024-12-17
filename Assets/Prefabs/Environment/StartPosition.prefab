@@ -49,6 +49,7 @@ MonoBehaviour:
   startPosition: {fileID: 3583034004911503570}
   enemyPrefabs:
   - {fileID: 8076706535465856181, guid: c4237369d19639b45b46a8423ebba308, type: 3}
+  - {fileID: 8157892774649208296, guid: 2868fe697782fcf419056ad5f6f1f45d, type: 3}
 --- !u!1 &6858791003415284482
 GameObject:
   m_ObjectHideFlags: 0

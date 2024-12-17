@@ -883,7 +883,7 @@ PrefabInstance:
       objectReference: {fileID: 1198934155}
     - target: {fileID: 2947054751700799139, guid: 0e7082f2e0c186b4f857356a3f3f8e35, type: 3}
       propertyPath: m_VersionIndex
-      value: 1086
+      value: 1092
       objectReference: {fileID: 0}
     - target: {fileID: 5746487972117396769, guid: 0e7082f2e0c186b4f857356a3f3f8e35, type: 3}
       propertyPath: m_Mesh
@@ -959,6 +959,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 682242671298369257, guid: 240c710ab7b15f34f89059917bf7687b, type: 3}
+      propertyPath: defensePrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 6912315756500762665, guid: 718311a1fb1fd044b822ccf828f673c1, type: 3}
     - target: {fileID: 2743114935634352831, guid: 240c710ab7b15f34f89059917bf7687b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.6736383
