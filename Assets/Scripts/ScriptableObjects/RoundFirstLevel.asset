@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd1f5d8d8e5ab454ab6b24019b15c3ac, type: 3}
   m_Name: RoundFirstLevel
   m_EditorClassIdentifier: 
+  roundsLevel:
+  - <NumberByTypeOfEnemies>k__BackingField: 
+    <TypeEnemies>k__BackingField: []

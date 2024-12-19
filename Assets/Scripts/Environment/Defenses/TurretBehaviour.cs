@@ -27,7 +27,7 @@ namespace Environment.Defenses
             StartCoroutine(ShootRoutine());
         }
 
-        private void Update()
+        protected void Update()
         {
             if (HasTarget())
             {
@@ -50,7 +50,7 @@ namespace Environment.Defenses
             }
         }
 
-        private void OnTriggerStay(Collider other)
+        protected void OnTriggerStay(Collider other)
         {
             if (HasTarget())
             {
@@ -64,7 +64,7 @@ namespace Environment.Defenses
             }
         }
 
-        private void OnTriggerExit(Collider other)
+        protected void OnTriggerExit(Collider other)
         {
             if (!HasTarget())
             {

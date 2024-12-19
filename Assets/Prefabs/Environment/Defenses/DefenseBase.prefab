@@ -132,6 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 866409994186161521}
   - component: {fileID: 7232397039895335452}
+  - component: {fileID: 157393986974691339}
   m_Layer: 0
   m_Name: DefenseBase
   m_TagString: Untagged
@@ -168,3 +169,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: 1
+--- !u!135 &157393986974691339
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057134079025012373}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.5
+  m_Center: {x: 0.5, y: 0.42, z: 0.5}

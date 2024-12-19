@@ -2,13 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Environment
 {
     [CreateAssetMenu(menuName = "Game/Round", fileName = "RoundSO", order = 0)]
     public class Rounds : ScriptableObject
     {
-        public List<Round> RoundsLevel;
+        public List<Round> roundsLevel;
     }
 
     [Serializable]

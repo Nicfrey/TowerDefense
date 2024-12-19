@@ -6,11 +6,11 @@ namespace Environment.Defenses.Bullets
 {
     public class SimpleBulletBehaviour : MonoBehaviour
     {
-        [SerializeField] private float speed;
-        [SerializeField] private int damage;
+        [SerializeField] protected float speed;
+        [SerializeField] protected int damage;
         public EnemyBehaviour Target { get; set; }
 
-        private void Start()
+        protected void Start()
         {
             if (Target)
             {
@@ -28,7 +28,7 @@ namespace Environment.Defenses.Bullets
             }
         }
 
-        void Update()
+        protected void Update()
         {
             if (Target)
             {
