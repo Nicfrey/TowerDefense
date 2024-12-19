@@ -42,10 +42,15 @@ namespace Environment.Defenses.Bullets
             EnemyBehaviour enemy = other.GetComponent<EnemyBehaviour>();
             if (enemy && enemy == Target)
             {
-                HealthBehaviour health = other.GetComponent<HealthBehaviour>();
-                health.TakeDamage(damage);
-                Destroy(gameObject);
+                TouchEnemy(enemy);
             }
+        }
+
+        protected virtual void TouchEnemy(EnemyBehaviour enemy)
+        {
+            HealthBehaviour health = enemy.GetComponent<HealthBehaviour>();
+            health.TakeDamage(damage);
+            Destroy(gameObject);
         }
     }
 }

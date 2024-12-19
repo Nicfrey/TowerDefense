@@ -7,15 +7,12 @@ namespace Environment.Defenses.Bullets
     public class SlowBulletBehaviour : SimpleBulletBehaviour
     {
         [SerializeField] private float durationSlow;
+        [SerializeField] private float amountSlow;
 
-        private void OnTriggerEnter(Collider other)
+        protected override void TouchEnemy(EnemyBehaviour enemy)
         {
-            EnemyBehaviour enemy = other.GetComponent<EnemyBehaviour>();
-            if (enemy && enemy == Target)
-            {
-                enemy.Slow(damage,durationSlow);
-                Destroy(gameObject);
-            }
+            enemy.Slow(amountSlow,durationSlow);
+            base.TouchEnemy(enemy);
         }
     }
 }
