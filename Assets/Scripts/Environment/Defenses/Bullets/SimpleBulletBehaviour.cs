@@ -15,7 +15,9 @@ namespace Environment.Defenses.Bullets
             if (Target)
             {
                 Target.GetComponent<HealthBehaviour>().onDeath.AddListener(DestroyBullet);
+                return;
             }
+            Destroy(gameObject);
         }
 
         private void DestroyBullet(GameObject enemy)
