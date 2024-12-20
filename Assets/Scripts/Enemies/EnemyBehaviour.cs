@@ -7,13 +7,20 @@ using UnityEngine.AI;
 
 namespace Enemies
 {
+    public enum EnemyType
+    {
+        Normal,
+        Tiny
+    }
     public class EnemyBehaviour : MonoBehaviour
     {
         [SerializeField] private float speed;
+        [SerializeField] private EnemyType enemyType;
         private NavMeshAgent _agent;
         private HealthBehaviour _health;
 
         private Coroutine _slowRoutine;
+        public EnemyType EnemyType => enemyType;
 
         private void Start()
         {

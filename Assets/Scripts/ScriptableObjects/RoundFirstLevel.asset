@@ -13,5 +13,20 @@ MonoBehaviour:
   m_Name: RoundFirstLevel
   m_EditorClassIdentifier: 
   roundsLevel:
-  - <NumberByTypeOfEnemies>k__BackingField: 
-    <TypeEnemies>k__BackingField: []
+  - <NumberByTypeOfEnemies>k__BackingField: 0a0000000a000000
+    <TypeEnemies>k__BackingField:
+    - {fileID: 8076706535465856181, guid: c4237369d19639b45b46a8423ebba308, type: 3}
+    - {fileID: 8157892774649208296, guid: 2868fe697782fcf419056ad5f6f1f45d, type: 3}
+  - <NumberByTypeOfEnemies>k__BackingField: 0f000000
+    <TypeEnemies>k__BackingField:
+    - {fileID: 8076706535465856181, guid: c4237369d19639b45b46a8423ebba308, type: 3}
+  - <NumberByTypeOfEnemies>k__BackingField: 14000000
+    <TypeEnemies>k__BackingField:
+    - {fileID: 8076706535465856181, guid: c4237369d19639b45b46a8423ebba308, type: 3}
+  - <NumberByTypeOfEnemies>k__BackingField: 0a000000
+    <TypeEnemies>k__BackingField:
+    - {fileID: 8157892774649208296, guid: 2868fe697782fcf419056ad5f6f1f45d, type: 3}
+  - <NumberByTypeOfEnemies>k__BackingField: 0a0000000a000000
+    <TypeEnemies>k__BackingField:
+    - {fileID: 8157892774649208296, guid: 2868fe697782fcf419056ad5f6f1f45d, type: 3}
+    - {fileID: 8076706535465856181, guid: c4237369d19639b45b46a8423ebba308, type: 3}

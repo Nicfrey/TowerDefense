@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e1395430e1c64a438c200baf19b6097, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 0
+  size: 1
   baseTurret: {fileID: 8816670786741728440}
   turretPivot: {fileID: 2444073238955264354}
   muzzleTurret: {fileID: 5234890838479620793}

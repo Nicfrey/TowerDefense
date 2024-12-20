@@ -9,6 +9,7 @@ namespace Environment
     {
         public static StartPositionBehaviour Instance;
         [SerializeField] private Transform startPosition;
+        private RoundManagerBehaviour roundManager;
         [SerializeField] private GameObject[] enemyPrefabs;
         private List<GameObject> _enemiesSpawned = new ();
         private bool _isDestroyingObject;
@@ -18,6 +19,7 @@ namespace Environment
             if (!Instance)
             {
                 Instance = this;
+                roundManager = GameManager.Instance.RoundManager;
                 return;
             }
             Destroy(gameObject);
@@ -33,6 +35,7 @@ namespace Environment
 
         private void Start()
         {
+            roundManager = GameManager.Instance.RoundManager;
             StartCoroutine(SpawnEnemy());
         }
 
@@ -42,13 +45,15 @@ namespace Environment
             {
                 yield return new WaitForSeconds(1f);
                 yield return new WaitUntil(IsNotDestroyingObject);
-                GameObject enemySpawned = Instantiate(enemyPrefabs[0],startPosition.position,Quaternion.identity);
+                yield return new WaitUntil(roundManager.CanSpawnEnemy);
+                GameObject enemySpawned = Instantiate(roundManager.GetEnemy(),startPosition.position,Quaternion.identity);
                 HealthBehaviour healthBehaviour = enemySpawned.GetComponent<HealthBehaviour>();
                 if (healthBehaviour)
                 {
                     healthBehaviour.onDeath.AddListener(RemoveEnemy);
                 }
                 _enemiesSpawned.Add(enemySpawned);   
+                roundManager.RegisterEnemySpawned(enemySpawned);
                 yield return null;
             }
         }

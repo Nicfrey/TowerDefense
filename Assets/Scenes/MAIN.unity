@@ -821,6 +821,27 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1429905124 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8412109313984071644, guid: 240c710ab7b15f34f89059917bf7687b, type: 3}
+  m_PrefabInstance: {fileID: 5277119647969089549}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1429905125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429905124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18da2567d16d39e45a00f724feb88f20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roundsLevel: {fileID: 11400000, guid: 7a4adddd5b2ab6942a331311b26f9ea9, type: 2}
+  onGameWin:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &3943478382459037044
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -891,7 +912,7 @@ PrefabInstance:
       objectReference: {fileID: 1198934155}
     - target: {fileID: 2947054751700799139, guid: 0e7082f2e0c186b4f857356a3f3f8e35, type: 3}
       propertyPath: m_VersionIndex
-      value: 1092
+      value: 1098
       objectReference: {fileID: 0}
     - target: {fileID: 5746487972117396769, guid: 0e7082f2e0c186b4f857356a3f3f8e35, type: 3}
       propertyPath: m_Mesh
@@ -971,6 +992,10 @@ PrefabInstance:
       propertyPath: defensePrefabs.Array.data[0]
       value: 
       objectReference: {fileID: 5899045461029419551, guid: 1f6c1f70f12bfc1468c13850066f4fb0, type: 3}
+    - target: {fileID: 2256565335005239104, guid: 240c710ab7b15f34f89059917bf7687b, type: 3}
+      propertyPath: roundManager
+      value: 
+      objectReference: {fileID: 1429905125}
     - target: {fileID: 2743114935634352831, guid: 240c710ab7b15f34f89059917bf7687b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.6736383
@@ -1018,7 +1043,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8412109313984071644, guid: 240c710ab7b15f34f89059917bf7687b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1429905125}
   m_SourcePrefab: {fileID: 100100000, guid: 240c710ab7b15f34f89059917bf7687b, type: 3}
 --- !u!1001 &6612279723841217183
 PrefabInstance:
